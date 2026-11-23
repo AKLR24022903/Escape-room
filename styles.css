@@ -1,0 +1,245 @@
+:root {
+    --bg-dark: #0b192c;
+    --card-bg: #132743;
+    --christmas-red: #d90429;
+    --christmas-red-hover: #ef233c;
+    --christmas-green: #2b9348;
+    --gold: #ffb703;
+    --text-light: #f8f9fa;
+    --text-muted: #ced4da;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1b3b6f, var(--bg-dark));
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow-x: hidden;
+}
+
+/* Barra superior (HUD) */
+.hud {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(11, 25, 44, 0.92);
+    border-bottom: 2px solid var(--gold);
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.hud-item .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-right: 0.4rem;
+}
+
+#progress-text, #timer {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--gold);
+}
+
+.timer-danger {
+    color: var(--christmas-red-hover) !important;
+    animation: pulse 1s infinite;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 3.5rem;
+    z-index: 5;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 2px solid rgba(255, 183, 3, 0.4);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+}
+
+h2 {
+    margin: 0.8rem 0;
+    font-size: 1.4rem;
+}
+
+.story {
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: var(--text-muted);
+}
+
+.badge {
+    background: var(--christmas-green);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.question-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 1.2rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--christmas-red);
+    margin: 1.2rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.hint {
+    background: rgba(255, 183, 3, 0.15);
+    color: var(--gold);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    border: 2px solid #2b4c7e;
+    background: #0b192c;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: var(--gold);
+}
+
+.actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--christmas-red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--christmas-red-hover);
+}
+
+.btn-secondary {
+    background: #2b4c7e;
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background: #3a63a1;
+}
+
+.feedback {
+    margin-top: 1rem;
+    font-weight: bold;
+    min-height: 1.4rem;
+}
+
+.error {
+    color: #ff6b6b;
+}
+
+.success {
+    color: #51cf66;
+}
+
+.stats-box {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.shake {
+    animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* Efecto de nieve ligero */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(3px 3px at 20% 30%, rgba(255,255,255,0.6) 50%, transparent),
+        radial-gradient(4px 4px at 70% 60%, rgba(255,255,255,0.5) 50%, transparent),
+        radial-gradient(2px 2px at 40% 80%, rgba(255,255,255,0.7) 50%, transparent);
+    background-size: 250px 250px;
+    animation: snowFall 10s linear infinite;
+}
+
+@keyframes snowFall {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 500px; }
+}

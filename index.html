@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room Navideño: El Código del Polo Norte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="snow-container" aria-hidden="true"></div>
+
+    <header class="hud">
+        <div class="hud-item">
+            <span class="label">CANDADOS:</span>
+            <span id="progress-text">0 / 5</span>
+        </div>
+        <div class="hud-item timer-box">
+            <span class="label">TIEMPO RESTANTE:</span>
+            <span id="timer">05:00</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- PANTALLA DE INICIO -->
+        <section id="start-screen" class="card active">
+            <h1>🎄 Misión: El Código del Polo Norte</h1>
+            <p class="story">
+                ¡Emergencia en el taller! Un duende travieso activó el cierre de seguridad de la bóveda donde se guarda la <strong>Estrella de Navidad</strong>. 
+                Sin ella, el trineo no podrá despegar esta noche.
+            </p>
+            <p class="story">
+                Tienes exactamente <strong>5 minutos</strong> para resolver 5 acertijos sobre tradiciones e historia navideña y desbloquear los candados digitales.
+            </p>
+            <button id="start-btn" class="btn btn-primary">Iniciar Misión</button>
+        </section>
+
+        <!-- PANTALLA DE JUEGO -->
+        <section id="game-screen" class="card hidden">
+            <div class="stage-header">
+                <span id="stage-badge" class="badge">Candado 1 de 5</span>
+                <h2 id="question-title">Título del acertijo</h2>
+            </div>
+            
+            <p id="question-text" class="question-box"></p>
+            <p id="hint-text" class="hint hidden"></p>
+
+            <form id="answer-form" autocomplete="off">
+                <input type="text" id="answer-input" placeholder="Escribe tu respuesta aquí..." required>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary">Desbloquear</button>
+                    <button type="button" id="hint-btn" class="btn btn-secondary">Ver Pista (-15s)</button>
+                </div>
+            </form>
+
+            <p id="feedback-msg" class="feedback"></p>
+        </section>
+
+        <!-- PANTALLA DE VICTORIA -->
+        <section id="win-screen" class="card hidden">
+            <h1>🎅 ¡Bóveda Desbloqueada!</h1>
+            <p class="story">
+                ¡Lo lograste! Recuperaste la Estrella de Navidad y el trineo está listo para repartir regalos por todo el mundo.
+            </p>
+            <div class="stats-box">
+                <p>Tiempo sobrante: <strong id="final-time"></strong></p>
+            </div>
+            <button onclick="location.reload()" class="btn btn-primary">Jugar de nuevo</button>
+        </section>
+
+        <!-- PANTALLA DE DERROTA -->
+        <section id="lose-screen" class="card hidden">
+            <h1>❄️ ¡Se acabó el tiempo!</h1>
+            <p class="story">
+                El sistema de seguridad bloqueó la bóveda por completo. Tendrás que intentarlo de nuevo antes de que amanezca.
+            </p>
+            <button onclick="location.reload()" class="btn btn-primary">Reintentar Misión</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
